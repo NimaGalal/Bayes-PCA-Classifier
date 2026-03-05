@@ -1,0 +1,31 @@
+from sklearn.datasets import load_digits
+from ucimlrepo import fetch_ucirepo
+import pandas as pan
+
+#Loading the data 
+pure_numerical_data = load_digits()
+pure_categorical_data = fetch_ucirepo (id=73)
+
+#Extracting the features 
+X = pure_categorical_data.data.features
+Y = pure_categorical_data.data.targets
+Z = pure_numerical_data.data
+W = pure_numerical_data.target
+
+#Wrapping the data into dataframe 
+df1 = pan.DataFrame (X)
+df1 ['target'] = Y
+
+df2 = pan.DataFrame (Z , columns = pure_numerical_data.feature_names )
+df2 ['target'] = W
+
+#Checking the datasets 
+print(df1.shape)
+print(df1.head())
+print(df1.isnull().sum() )
+print(df1['target'].value_counts())
+
+print(df2.shape)
+print(df2.head())
+print(df2.isnull().sum() )
+print(df2['target'].value_counts())
