@@ -1,31 +1,49 @@
 from sklearn.datasets import load_digits
 from ucimlrepo import fetch_ucirepo
-import pandas as pan
+from sklearn.model_selection import train_test_split
+import pandas as pd
 
-#Loading the data 
-pure_numerical_data = load_digits()
-pure_categorical_data = fetch_ucirepo (id=73)
 
-#Extracting the features 
-X = pure_categorical_data.data.features
-Y = pure_categorical_data.data.targets
-Z = pure_numerical_data.data
-W = pure_numerical_data.target
+def loadCategoricalData():
+    #Loading categorical data
+    return fetch_ucirepo(id=73)
 
-#Wrapping the data into dataframe 
-df1 = pan.DataFrame (X)
-df1 ['target'] = Y
+def loadNumericalData():
+    #Loading numerical data
+    return load_digits()
 
-df2 = pan.DataFrame (Z , columns = pure_numerical_data.feature_names )
-df2 ['target'] = W
+def extractNumericalFeatures(pure_numerical_data):
+    #Extracting the features 
+    X = pure_numerical_data.data
+    Y = pure_numerical_data.target
 
-#Checking the datasets 
-print(df1.shape)
-print(df1.head())
-print(df1.isnull().sum() )
-print(df1['target'].value_counts())
+    X_train_num, X_test_num, Y_train_num, Y_test_num = train_test_split(X, Y, test_size=0.2, random_state=42)
 
-print(df2.shape)
-print(df2.head())
-print(df2.isnull().sum() )
-print(df2['target'].value_counts())
+    return X_train_num, X_test_num, Y_train_num, Y_test_num
+
+def extractCategoricalFeatures(pure_categorical_data):
+    #Extracting the features 
+    X = pure_categorical_data.data.features
+    Y = pure_categorical_data.data.targets
+    df1 = pd.DataFrame(X)
+    df1 ['target'] = Y
+    return df1
+
+def processCategoricalData(df):
+    #Processing the categorical data
+    df_processed = df.apply(lambda x: x.fillna(x.mode()[0]))    
+
+    # train-test split
+    X = df_processed.drop('target', axis=1).values
+    Y = df_processed['target'].values
+    X_train_cat, X_test_cat, Y_train_cat, Y_test_cat = train_test_split(X, Y, test_size=0.2, random_state=42)
+    return X_train_cat, X_test_cat, Y_train_cat, Y_test_cat
+
+def dataLoadingAndExtractingNumericalFeatures():
+    pure_numerical_data = loadNumericalData()
+    return extractNumericalFeatures(pure_numerical_data)
+
+def dataLoadingAndExtractingCategoricalFeatures():
+    pure_categorical_data = loadCategoricalData()
+    df = extractCategoricalFeatures(pure_categorical_data)
+    return processCategoricalData(df)
