@@ -29,8 +29,6 @@ def Project (X_std,Top_EignVector) :
     return np.dot ( X_std , Top_EignVector)
 
 
-X_train, X_test, Y_train, Y_test = dataLoadingAndExtractingNumericalFeatures()
-
 def PCA_implementation (X_train, X_test, k ) :
     X_train_std , mean , standard_deviation  = Standarize_Values (X_train)
     X_test_std = (X_test- mean)/standard_deviation 
