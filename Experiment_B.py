@@ -13,10 +13,10 @@ X_train, X_test, Y_train, Y_test = dataLoadingAndExtractingNumericalFeatures()
 def get_baseline (X_train, X_test, Y_train, Y_test) :
 
     nb1 =  NumericalNaiveBayes()
-    cm1 , accs1 , cr1 = nb1.evaluate (X_train , Y_train ,X_test , Y_test)
+    accs1 , cm1 , cr1 = nb1.evaluate (X_train , Y_train ,X_test , Y_test)
     print ('Results before applying PCA')
-    print (cm1)
     print (accs1)
+    print (cm1)
     print (cr1)
     return float(accs1)             
 
@@ -25,11 +25,11 @@ def NB_PCA (k,baseline_accuracy) :
     
     Final_result_XTrain , Final_result_XTest = PCA_implementation(X_train, X_test, k)
     nb2 = NumericalNaiveBayes()
-    cm2 , accs2 , cr2 = nb2.evaluate (Final_result_XTrain , Y_train ,
+    accs2 , cm2 , cr2 = nb2.evaluate (Final_result_XTrain , Y_train ,
                               Final_result_XTest, Y_test)
     print ('Results after applying PCA')
-    print (cm2)
     print (accs2)
+    print (cm2)
     print (cr2)
 
 #Comparison with baseline 
