@@ -1,7 +1,7 @@
 # Experiment B
 
 from sklearn.metrics import confusion_matrix , accuracy_score , classification_report
-from naivebayesclassifier import NumericalNaiveBayes
+from naive_bayes_classsifer_model import NumericalNaiveBayes
 from pca import PCA_implementation
 from dataloading import dataLoadingAndExtractingNumericalFeatures
 
@@ -10,7 +10,7 @@ from dataloading import dataLoadingAndExtractingNumericalFeatures
 
 X_train, X_test, Y_train, Y_test = dataLoadingAndExtractingNumericalFeatures()
 
-def get_basline (X_train, X_test, Y_train, Y_test) :
+def get_baseline (X_train, X_test, Y_train, Y_test) :
 
     nb1 =  NumericalNaiveBayes()
     cm1 , accs1 , cr1 = nb1.evaluate (X_train , Y_train ,X_test , Y_test)
@@ -33,10 +33,10 @@ def NB_PCA (k,baseline_accuracy) :
     print (cr2)
 
 #Comparison with baseline 
-    print (f"basline accuracy : {baseline_accuracy:.2%}")
+    print (f"baseline accuracy : {baseline_accuracy:.2%}")
     print (f"PCA accuracy : k= {k} {accs2:.2%}")
     if baseline_accuracy > accs2  :
-       print ('basline is more accurate than PCA ')
+       print ('baseline is more accurate than PCA ')
     else :
       print ('PCA is more accurate than baseline')
     
