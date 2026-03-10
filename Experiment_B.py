@@ -18,7 +18,7 @@ def get_baseline (X_train, X_test, Y_train, Y_test) :
     print (cm1)
     print (accs1)
     print (cr1)
-    return accs1             
+    return float(accs1)             
 
 
 def NB_PCA (k,baseline_accuracy) :
