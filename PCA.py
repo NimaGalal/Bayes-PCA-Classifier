@@ -3,6 +3,7 @@ import numpy as np
 def Standarize_Values (X) :
     mean = np.mean (X, axis=0)
     standard_deviation = np.std (X, axis=0)
+    standard_deviation[standard_deviation == 0] = 1e-9 
     return  (X-mean)/standard_deviation , mean , standard_deviation
 
 
