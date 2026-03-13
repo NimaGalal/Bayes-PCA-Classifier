@@ -42,6 +42,7 @@ def NB_PCA (k,baseline_accuracy) :
     
 
 #k Experiments 
+if __name__ == "__main__":
 baseline_accuracy = get_baseline(X_train, X_test, Y_train, Y_test)
 k_values = [10,20,30,40,50]
 for k in k_values :
