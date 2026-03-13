@@ -1,7 +1,6 @@
 import data_loading
 from naive_bayes_classifier_model import NumericalNaiveBayes, CategoricalNaiveBayes
 from experiment_b import NB_PCA, get_baseline
-import dataloading as data_loading
 from dataloading import dataLoadingAndExtractingNumericalFeatures
 
 def numericalDataEvaluation():
