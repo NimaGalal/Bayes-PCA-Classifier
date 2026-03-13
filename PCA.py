@@ -39,3 +39,11 @@ def PCA_implementation (X_train, X_test, k ) :
     Final_result_XTrain = Project (X_train_std ,Top_EignVector_std)
     Final_result_XTest = Project (X_test_std ,Top_EignVector_std)
     return Final_result_XTrain , Final_result_XTest
+
+def PCA_implementation_with_one_input (X, k ) :
+    X_std , mean , standard_deviation  = Standarize_Values (X)
+    X_cov = Covariance_Matrix(X_std)
+    Eignvalues_std , Eignvectors_std = Compute_Eigns (X_cov)
+    Top_EignVector_std = Sort_Select (Eignvalues_std , Eignvectors_std, k )
+    Final_result_X = Project (X_std ,Top_EignVector_std)
+    return Final_result_X

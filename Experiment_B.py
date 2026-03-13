@@ -1,14 +1,8 @@
 # Experiment B
-
 from sklearn.metrics import confusion_matrix , accuracy_score , classification_report
-from naive_bayes_classsifer_model import NumericalNaiveBayes
-from pca import PCA_implementation
-from dataloading import dataLoadingAndExtractingNumericalFeatures
-
-#Passing the PC's to the Naiive bayes Classifier
-#Evaluation
-
-X_train, X_test, Y_train, Y_test = dataLoadingAndExtractingNumericalFeatures()
+from naive_bayes_classifier_model import NumericalNaiveBayes
+from PCA import PCA_implementation
+from data_loading import dataLoadingAndExtractingNumericalFeatures
 
 def get_baseline (X_train, X_test, Y_train, Y_test) :
 
@@ -21,7 +15,7 @@ def get_baseline (X_train, X_test, Y_train, Y_test) :
     return float(accs1)             
 
 
-def NB_PCA (k,baseline_accuracy) :
+def NB_PCA (k,baseline_accuracy,X_train, X_test, Y_train, Y_test) :
     
     Final_result_XTrain , Final_result_XTest = PCA_implementation(X_train, X_test, k)
     nb2 = NumericalNaiveBayes()
@@ -40,10 +34,8 @@ def NB_PCA (k,baseline_accuracy) :
     else :
       print ('PCA is more accurate than baseline')
     
-
-#k Experiments 
-if __name__ == "__main__":
-baseline_accuracy = get_baseline(X_train, X_test, Y_train, Y_test)
-k_values = [10,20,30,40,50]
-for k in k_values :
-    NB_PCA (k,baseline_accuracy)
+def runExperimentB(X_train_num, X_test_num, Y_train_num, Y_test_num):
+    baseline_accuracy = get_baseline(X_train_num, X_test_num, Y_train_num, Y_test_num)
+    k_values = [10,20,30,40,50]
+    for k in k_values :
+        NB_PCA (k,baseline_accuracy,X_train_num, X_test_num, Y_train_num, Y_test_num)

@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+import plotting
 
 class NumericalNaiveBayes:
     def computePrior(self, Y_train):
@@ -54,6 +55,12 @@ class NumericalNaiveBayes:
         cm = confusion_matrix(Y_test, predictions)
         cr = classification_report(Y_test, predictions)
         return accuracy, cm, cr
+    
+    def numericalDataEvaluation(self, X_train_num, X_test_num, Y_train_num, Y_test_num):
+        accuracy, cm, cr = self.evaluate(X_train_num, Y_train_num, X_test_num, Y_test_num)
+        plotting.plotDataWithPCAAndGaussianPDF(X_test_num, Y_test_num)
+        plotting.plotConfusionMatrix(cm, Y_test_num)
+        return accuracy
 
 class CategoricalNaiveBayes:
     def computePrior(self, Y_train):
@@ -103,3 +110,8 @@ class CategoricalNaiveBayes:
         cm = confusion_matrix(Y_test, predictions)
         cr = classification_report(Y_test, predictions)
         return accuracy, cm, cr
+
+    def categoricalDataEvaluation(self, X_train_cat, X_test_cat, Y_train_cat, Y_test_cat):
+        accuracy, cm, cr = self.evaluate(X_train_cat, Y_train_cat, X_test_cat, Y_test_cat)
+        plotting.plotConfusionMatrix(cm, Y_test_cat)
+        return accuracy
