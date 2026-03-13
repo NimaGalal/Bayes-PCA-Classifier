@@ -1,6 +1,5 @@
-import data_loading_and_processing as data_loading
-from model import NumericalNaiveBayes, CategoricalNaiveBayes
-import plotting
+import data_loading
+from naive_bayes_classsifer_model import NumericalNaiveBayes, CategoricalNaiveBayes
 
 def numericalDataEvaluation():
     X_train_num, X_test_num, Y_train_num, Y_test_num = data_loading.dataLoadingAndExtractingNumericalFeatures()
@@ -24,17 +23,10 @@ def categoricalDataEvaluation():
     print("Classification Report:")
     print(cr_cat)
 
-def plotDataWithPCAAndGaussianPDF():
-    X_train_num, X_test_num, Y_train_num, Y_test_num = data_loading.dataLoadingAndExtractingNumericalFeatures()
-    nb_numerical = NumericalNaiveBayes()
-    nb_numerical.train(X_train_num, Y_train_num)
-    plotDataWithPCAAndGaussianPDF(X_test_num, Y_test_num)
-
 def main():
     numericalDataEvaluation()
     print("\n" + "="*50 + "\n")
     categoricalDataEvaluation()
-    plotDataWithPCAAndGaussianPDF()
 
 if __name__ == "__main__":
     main()
