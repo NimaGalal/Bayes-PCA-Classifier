@@ -1,6 +1,8 @@
 import data_loading
 from naive_bayes_classifier_model import NumericalNaiveBayes, CategoricalNaiveBayes
 from experiment_b import NB_PCA, get_baseline
+import dataloading as data_loading
+from dataloading import dataLoadingAndExtractingNumericalFeatures
 
 def numericalDataEvaluation():
     X_train_num, X_test_num, Y_train_num, Y_test_num = data_loading.dataLoadingAndExtractingNumericalFeatures()
@@ -24,7 +26,7 @@ def categoricalDataEvaluation():
     print("Classification Report:")
     print(cr_cat)
 
-def experiment_BEvaluation():
+def experimentBEvaluation():
     X_train, X_test, Y_train, Y_test = dataLoadingAndExtractingNumericalFeatures()
     baseline_accuracy = get_baseline(X_train, X_test, Y_train, Y_test)
     k_values = [10, 20, 30, 40, 50]
