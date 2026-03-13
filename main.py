@@ -1,5 +1,5 @@
 import data_loading
-from model import NumericalNaiveBayes, CategoricalNaiveBayes
+from naive_bayes_classifier_model.py import NumericalNaiveBayes, CategoricalNaiveBayes
 
 def numericalDataEvaluation():
     X_train_num, X_test_num, Y_train_num, Y_test_num = data_loading.dataLoadingAndExtractingNumericalFeatures()
