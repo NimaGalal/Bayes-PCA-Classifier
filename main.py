@@ -24,7 +24,7 @@ def experimentOnCategoricalFeatures():
     Experiment_B.runExperimentB_categorical(X_train_cat, X_test_cat, Y_train_cat, Y_test_cat)
 
 def main():
-     experimentOnNumericalFeatures()
+    experimentOnNumericalFeatures()
     experimentOnCategoricalFeatures()
 if __name__ == "__main__":
     main()

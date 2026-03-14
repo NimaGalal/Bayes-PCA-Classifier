@@ -37,7 +37,7 @@ Understand how **Naive Bayes** works, explore **feature selection** techniques, 
 
 ---
 
-## 🔬 Experimental Pipeline
+## Experimental Pipeline
 
 Each dataset goes through **three experiments**:
 
@@ -54,7 +54,7 @@ Each dataset goes through **three experiments**:
 
 ### Visualizations
 - Confusion matrices (heatmaps)
-- 📊 Data plotting with PCA and Gaussian PDF contours
+- Data plotting with PCA and Gaussian PDF contours
 
 ---
 
@@ -68,7 +68,7 @@ Bayes-PCA-Classifier/
 ├── Experiment_A.py                     # Feature Selection (ANOVA) + Naive Bayes
 ├── Experiment_B.py                     # PCA from scratch + Naive Bayes
 ├── naive_bayes_classifier_model.py     # Naive Bayes Classifier Implementation
-├── PCA.py                              # ⭐ PCA from scratch (NumPy only)
+├── PCA.py                              # PCA from scratch (NumPy only)
 ├── data_loading.py                     # Dataset loading and preprocessing
 └── plotting.py                         # Visualizations and plots
 ```
