@@ -17,9 +17,7 @@ def ANOVASelection(X_train_num, X_test_num, Y_train_num, Y_test_num, k=2):
     return X_train_selected, X_test_selected, selected_indices
 
 def runExperimentA(X_train_num, X_test_num, Y_train_num, Y_test_num, k=50):
-    X_train_sel, X_test_sel, selected_indices = ANOVASelection(
-        X_train_num, X_test_num, Y_train_num, Y_test_num, k=k
-    )
+    X_train_sel, X_test_sel, selected_indices = ANOVASelection(X_train_num, X_test_num, Y_train_num, Y_test_num, k=k)
     nb_numerical = NumericalNaiveBayes()
     accuracy, cm, cr = nb_numerical.evaluate(X_train_sel, Y_train_num, X_test_sel, Y_test_num)
     plotting.plotConfusionMatrix(cm, Y_test_num, title='Confusion Matrix for feature selection')
