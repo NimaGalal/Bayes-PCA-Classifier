@@ -20,6 +20,6 @@ def experimentOnCategoricalFeatures():
     print (f"Accuracy on categorical features: {accuracy_cat:.2%}")
 def main():
     experimentOnNumericalFeatures()
-    # experimentOnCategoricalFeatures()
+    experimentOnCategoricalFeatures()
 if __name__ == "__main__":
     main()
