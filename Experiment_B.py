@@ -1,9 +1,9 @@
 # Experiment B
 from sklearn.metrics import confusion_matrix , accuracy_score , classification_report
-from naive_bayes_classsifer_model import NumericalNaiveBayes
-from pca import PCA_implementation
-from dataloading import dataLoadingAndExtractingNumericalFeatures
-from dataloading import dataLoadingAndExtractingCategoricalFeatures
+from naive_bayes_classifier_model import NumericalNaiveBayes
+from PCA import PCA_implementation
+from data_loading import dataLoadingAndExtractingNumericalFeatures
+from data_loading import dataLoadingAndExtractingCategoricalFeatures
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 
