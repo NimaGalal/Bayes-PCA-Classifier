@@ -88,6 +88,21 @@ def NBA_PCA_categorical (k,baseline_accuracy,X_train_cat, X_test_cat,
 
 
 
+def runExperimentB (X_train, X_test, Y_train, Y_test):
+#for numerical data
+    baseline_accuracy = get_baseline(X_train, X_test, Y_train, Y_test)
+    k_values = [10,20,30,40,50]
+    for k in k_values :
+       NB_PCA (k,baseline_accuracy)
+#for categorical data
+    X_train_cat, X_test_cat, Y_train_cat, Y_test_cat = dataLoadingAndExtractingCategoricalFeatures()
+    baseline_accuracy = get_baseline_categorical(X_train_cat, X_test_cat, Y_train_cat, Y_test_cat)
+    k_values_cat = [5,10,15,20]
+    for k in k_values_cat :
+       NBA_PCA_categorical (k,baseline_accuracy,X_train_cat, X_test_cat, Y_train_cat, Y_test_cat)
+
+
+
 #k Experiments 
 if __name__ == "__main__":
     #for numerical data
@@ -97,7 +112,8 @@ if __name__ == "__main__":
        NB_PCA (k,baseline_accuracy)
 
 
-   #for categorical data
+    #for categorical data
+    X_train_cat, X_test_cat, Y_train_cat, Y_test_cat = dataLoadingAndExtractingCategoricalFeatures()
     baseline_accuracy = get_baseline_categorical(X_train_cat, X_test_cat, Y_train_cat, Y_test_cat)
     k_values_cat = [5,10,15,20]
     for k in k_values_cat :
