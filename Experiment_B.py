@@ -2,8 +2,6 @@
 from sklearn.metrics import confusion_matrix , accuracy_score , classification_report
 from naive_bayes_classifier_model import NumericalNaiveBayes
 from PCA import PCA_implementation
-from data_loading import dataLoadingAndExtractingNumericalFeatures
-from data_loading import dataLoadingAndExtractingCategoricalFeatures
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 
@@ -72,17 +70,14 @@ def runExperimentB_categorical(X_train_cat, X_test_cat, Y_train_cat, Y_test_cat)
         NBA_PCA_categorical(k, baseline_accuracy, X_train_cat, X_test_cat, Y_train_cat, Y_test_cat)
 
 
-#k Experiments 
-if __name__ == "__main__":
-    #for numerical data
-    X_train, X_test, Y_train, Y_test = dataLoadingAndExtractingNumericalFeatures()
+
+def runExperimentB (X_train, X_test, Y_train, Y_test):
+#for numerical data
     baseline_accuracy = get_baseline(X_train, X_test, Y_train, Y_test)
     k_values = [10,20,30,40,50]
     for k in k_values :
-       NB_PCA (k,baseline_accuracy, X_train, X_test, Y_train, Y_test)
-
-
-   #for categorical data
+       NB_PCA (k,baseline_accuracy)
+#for categorical data
     X_train_cat, X_test_cat, Y_train_cat, Y_test_cat = dataLoadingAndExtractingCategoricalFeatures()
     baseline_accuracy = get_baseline_categorical(X_train_cat, X_test_cat, Y_train_cat, Y_test_cat)
     k_values_cat = [5,10,15,20]
