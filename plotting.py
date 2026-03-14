@@ -12,14 +12,6 @@ def plotConfusionMatrix(cm, classes, title='Confusion Matrix', cmap=plt.cm.Blues
     plt.xlabel('Predicted label')
     plt.show()
 
-def plotAccuracy(accuracy, title='Accuracy'):
-    plt.figure(figsize=(8, 6))
-    plt.bar(accuracy)
-    plt.title(title)
-    plt.ylabel('Accuracy')
-    plt.xlabel('Classes')
-    plt.show()
-
 def plotDataWithPCAAndGaussianPDF(X, Y, title='Data with PCA and Gaussian PDF'):
     X_pca = PCA_implementation_with_one_input(X, 2)
     plt.figure(figsize=(8, 6))

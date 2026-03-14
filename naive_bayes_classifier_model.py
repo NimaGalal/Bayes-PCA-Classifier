@@ -59,7 +59,7 @@ class NumericalNaiveBayes:
     def numericalDataEvaluation(self, X_train_num, X_test_num, Y_train_num, Y_test_num):
         accuracy, cm, cr = self.evaluate(X_train_num, Y_train_num, X_test_num, Y_test_num)
         plotting.plotDataWithPCAAndGaussianPDF(X_test_num, Y_test_num)
-        plotting.plotConfusionMatrix(cm, Y_test_num)
+        plotting.plotConfusionMatrix(cm, Y_test_num, title='Confusion Matrix  with baseline accuracy')
         return accuracy
 
 class CategoricalNaiveBayes:
